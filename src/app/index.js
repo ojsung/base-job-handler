@@ -19,10 +19,18 @@ class BaseJobHandler {
         this.ipAddress = retrieve_ip_1.default('IPv6', 'all', false, 1)[0];
         this.subPubLinks = {};
         this.pubSubLinks = {};
+        this.subscribedChannels = [];
+        this.subscribed = false;
         // Calls validatePubSub to make sure that either the publisher or options parameters were given and valid.  If not,
         // this will throw an error
         ;
         [this.publisher, this.subscriber] = this.constructionValidator.validatePubSub(publisher, subscriber, options);
+    }
+    validateSubscriptions() {
+        if (!this.subscribed) {
+            this.subscriber.subscribe(this.subscribedChannels);
+            this.subscribed = true;
+        }
     }
 }
 exports.default = BaseJobHandler;

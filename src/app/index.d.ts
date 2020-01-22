@@ -25,4 +25,7 @@ export default class BaseJobHandler {
     };
     protected channelContainer: IChannelContainer | undefined;
     protected subscribeToChannels: (() => void) | undefined;
+    protected subscribedChannels: string[];
+    protected subscribed: boolean;
+    protected validateSubscriptions(): void;
 }

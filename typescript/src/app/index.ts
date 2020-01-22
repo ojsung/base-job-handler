@@ -34,5 +34,14 @@ export default class BaseJobHandler {
   protected subPubLinks: { [key: string]: string } = {}
   protected pubSubLinks: { [key: string]: string } = {}
   protected channelContainer: IChannelContainer | undefined
-  protected subscribeToChannels: (() => void ) | undefined
+  protected subscribeToChannels: (() => void) | undefined
+  protected subscribedChannels: string[] = []
+  protected subscribed = false
+
+  protected validateSubscriptions() {
+    if (!this.subscribed) {
+      this.subscriber.subscribe(this.subscribedChannels)
+      this.subscribed = true
+    }
+  }
 }

@@ -5,7 +5,12 @@ import { RedisClient, ClientOpts } from 'redis'
 import { EventEmitter } from 'events'
 import { IChannelContainer } from 'pubsub-construction-validator/src/app/models/channel-container.interface'
 
-export default class JobAcceptor {
+/**
+ * The base class from which JobAcceptor and JobRequestor are extended.  Initializes the shared variables and runs the shared tasks.
+ * Just seemed like a shame to rewrite the exact same code twice.
+ * Also, isn't "protected" the nicest bit of syntactical sugar?
+ */
+export default class BaseJobHandler {
   constructor(
     protected channels: IChannelInfo[],
     publisher?: RedisClient,

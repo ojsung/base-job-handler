@@ -23,5 +23,6 @@ export default class BaseJobHandler {
     protected pubSubLinks: {
         [key: string]: string;
     };
-    protected channelContainer: IChannelContainer;
+    protected channelContainer: IChannelContainer | undefined;
+    protected subscribeToChannels: (() => void) | undefined;
 }

@@ -23,17 +23,6 @@ class BaseJobHandler {
         // this will throw an error
         ;
         [this.publisher, this.subscriber] = this.constructionValidator.validatePubSub(publisher, subscriber, options);
-        // Fill the channel list with all the channels that should be subscribed to/published to
-        this.channelContainer = this.constructionValidator.fillChannelContainer(this.channels);
-        const channelList = Object.keys(this.channelContainer);
-        channelList.forEach(channel => {
-            const channelSubName = channel + '-sub';
-            const channelPubName = channel + '-pub';
-            this.pubSubLinks[channelPubName] = channelSubName;
-            this.subPubLinks[channelSubName] = channelPubName;
-            // subscribe to all the channels in the list
-            this.subscriber.subscribe(channel);
-        });
     }
 }
 exports.default = BaseJobHandler;

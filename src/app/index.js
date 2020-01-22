@@ -17,7 +17,6 @@ class BaseJobHandler {
         this.responseNotifier = new events_1.EventEmitter();
         this.constructionValidator = new pubsub_construction_validator_1.default();
         this.ipAddress = retrieve_ip_1.default('IPv6', 'all', false, 1)[0];
-        this.jobCount = 0;
         this.subPubLinks = {};
         this.pubSubLinks = {};
         // Calls validatePubSub to make sure that either the publisher or options parameters were given and valid.  If not,

@@ -41,7 +41,6 @@ export default class BaseJobHandler {
   protected publisher: RedisClient
   protected subscriber: RedisClient
   protected ipAddress: string = retrieveIp('IPv6', 'all', false, 1)[0]
-  protected jobCount: number = 0
   protected subPubLinks: { [key: string]: string } = {}
   protected pubSubLinks: { [key: string]: string } = {}
   protected channelContainer: IChannelContainer

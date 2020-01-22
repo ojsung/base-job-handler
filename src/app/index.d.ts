@@ -17,7 +17,6 @@ export default class BaseJobHandler {
     protected publisher: RedisClient;
     protected subscriber: RedisClient;
     protected ipAddress: string;
-    protected jobCount: number;
     protected subPubLinks: {
         [key: string]: string;
     };

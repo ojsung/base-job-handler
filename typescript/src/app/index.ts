@@ -1,4 +1,5 @@
 import { IChannelInfo } from './models/channel-info.interface'
+import { IMessageCallback } from './models/message-callback.interface'
 import retrieveIp from 'retrieve-ip'
 import ConstructionValidator from 'pubsub-construction-validator'
 import { RedisClient, ClientOpts } from 'redis'
@@ -33,6 +34,7 @@ export default abstract class BaseJobHandler {
       options
     )
   }
+  public baseCallback: IMessageCallback = (_channel: string, _message: string) => { }
   public readonly responseNotifier: EventEmitter = new EventEmitter()
   protected readonly constructionValidator: ConstructionValidator = new ConstructionValidator()
   protected readonly ipAddress: string = retrieveIp('IPv6', 'all', false, 1)[0]

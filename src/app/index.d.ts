@@ -1,5 +1,6 @@
 /// <reference types="node" />
 import { IChannelInfo } from './models/channel-info.interface';
+import { IMessageCallback } from './models/message-callback.interface';
 import ConstructionValidator from 'pubsub-construction-validator';
 import { RedisClient, ClientOpts } from 'redis';
 import { EventEmitter } from 'events';
@@ -20,6 +21,7 @@ export default abstract class BaseJobHandler {
      * @param [options] Optional.  If it is not provided, then the 'publisher' parameter must be given.  The Redis.ClientOpts to use to create the RedisClient.
      */
     constructor(channels: IChannelInfo[], publisher?: RedisClient, subscriber?: RedisClient, options?: ClientOpts);
+    baseCallback: IMessageCallback;
     readonly responseNotifier: EventEmitter;
     protected readonly constructionValidator: ConstructionValidator;
     protected readonly ipAddress: string;

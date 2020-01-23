@@ -39,8 +39,8 @@ export abstract class BaseJobHandler {
   protected readonly acceptanceToPostingChannelDictionary: { [key: string]: string } = {}
   protected readonly postingToAcceptanceChannelDictionary: { [key: string]: string } = {}
   protected readonly subscribedChannels: string[] = []
-  protected publisher: RedisClient
-  protected subscriber: RedisClient
+  protected readonly publisher: RedisClient
+  protected readonly subscriber: RedisClient
   protected channelContainer: IChannelContainer | undefined
   protected subscribeToChannels: (() => void) | undefined
   protected subscribed = false

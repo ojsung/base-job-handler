@@ -10,7 +10,7 @@ import { IChannelContainer } from 'pubsub-construction-validator/src/app/models/
  * Just seemed like a shame to rewrite the exact same code twice.
  * Also, isn't "protected" the nicest bit of syntactical sugar?
  */
-export default abstract class BaseJobHandler {
+declare abstract class BaseJobHandler {
     protected readonly channels: IChannelInfo[];
     /**
      * The base class from which JobAcceptor and JobRequestor are extended.  Initializes the shared variables and runs the shared tasks.
@@ -21,7 +21,6 @@ export default abstract class BaseJobHandler {
      * @param [options] Optional.  If it is not provided, then the 'publisher' parameter must be given.  The Redis.ClientOpts to use to create the RedisClient.
      */
     constructor(channels: IChannelInfo[], publisher?: RedisClient, subscriber?: RedisClient, options?: ClientOpts);
-    baseCallback: IMessageCallback;
     readonly responseNotifier: EventEmitter;
     protected readonly constructionValidator: ConstructionValidator;
     protected readonly ipAddress: string;
@@ -39,3 +38,4 @@ export default abstract class BaseJobHandler {
     protected subscribed: boolean;
     protected validateSubscriptions(): void;
 }
+export { BaseJobHandler as default, IChannelInfo, IChannelContainer, IMessageCallback };

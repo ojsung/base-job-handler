@@ -11,7 +11,7 @@ import { IChannelContainer } from 'pubsub-construction-validator/src/app/models/
  * Just seemed like a shame to rewrite the exact same code twice.
  * Also, isn't "protected" the nicest bit of syntactical sugar?
  */
-export default abstract class BaseJobHandler {
+abstract class BaseJobHandler {
   /**
    * The base class from which JobAcceptor and JobRequestor are extended.  Initializes the shared variables and runs the shared tasks.
    * @param channels An array of IChannelInfo to which the JobRequestor may need to post
@@ -34,7 +34,6 @@ export default abstract class BaseJobHandler {
       options
     )
   }
-  public baseCallback: IMessageCallback = (_channel: string, _message: string) => { }
   public readonly responseNotifier: EventEmitter = new EventEmitter()
   protected readonly constructionValidator: ConstructionValidator = new ConstructionValidator()
   protected readonly ipAddress: string = retrieveIp('IPv6', 'all', false, 1)[0]
@@ -54,3 +53,5 @@ export default abstract class BaseJobHandler {
     }
   }
 }
+
+export { BaseJobHandler as default, IChannelInfo, IChannelContainer, IMessageCallback }

@@ -22,7 +22,6 @@ class BaseJobHandler {
      */
     constructor(channels, publisher, subscriber, options) {
         this.channels = channels;
-        this.baseCallback = (_channel, _message) => { };
         this.responseNotifier = new events_1.EventEmitter();
         this.constructionValidator = new pubsub_construction_validator_1.default();
         this.ipAddress = retrieve_ip_1.default('IPv6', 'all', false, 1)[0];

@@ -5,6 +5,7 @@ import ConstructionValidator from 'pubsub-construction-validator'
 import { RedisClient, ClientOpts } from 'redis'
 import { EventEmitter } from 'events'
 import { IChannelContainer } from 'pubsub-construction-validator/src/app/models/channel-container.interface'
+import {IChannelIdentifier} from './models/channel-identifier.interface'
 
 /**
  * The base class from which JobAcceptor and JobRequestor are extended.  Initializes the shared variables and runs the shared tasks.
@@ -54,4 +55,4 @@ abstract class BaseJobHandler {
   }
 }
 
-export { BaseJobHandler as default, IChannelInfo, IChannelContainer, IMessageCallback }
+export { BaseJobHandler as default, IChannelInfo, IChannelContainer, IMessageCallback, IChannelIdentifier }

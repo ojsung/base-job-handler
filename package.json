@@ -80,7 +80,7 @@
   },
   "dependencies": {
     "pubsub-construction-validator": "git+https://github.com/ojsung/pubsub-construction-validator.git",
-    "redis": "^2.8.0",
+    "redis": "^3.1.1",
     "retrieve-ip": "git+https://github.com/ojsung/node-ip-retriever.git"
   }
 }
